@@ -32,10 +32,18 @@ function search() {
 	var filtered = tableData.filter(sighting => sighting.datetime == userinput);
 		
 	// create rows for filtered data
-	table.html('');
-	for (row = 0; row < filtered.length; row++) {
-		appendrow(filtered[row]);
-	};
+	if (userinput !== '') {
+		table.html('');
+		for (row = 0; row < filtered.length; row++) {
+			appendrow(filtered[row]);
+		};
+	}
+	else if (userinput == '') {
+		table.html('');
+		for (row = 0; row < tableData.length; row++) {
+			appendrow(tableData[row]);
+		};
+	}
 };
 
 button.on('click', search);
